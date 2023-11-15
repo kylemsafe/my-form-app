@@ -40,7 +40,7 @@ const DynamicForm = () => {
     const renderFormFields = (data, parentPath = '') => {
         return Object.entries(data).map(([key, value]) => {
             const path = parentPath ? `${parentPath}.${key}` : key;
-
+    
             if (value === null) {
                 return (
                     <div key={path}>
@@ -48,7 +48,7 @@ const DynamicForm = () => {
                         <input 
                             type="text" 
                             name={path} 
-                            value={formData[path] || ''} 
+                            value={getValueFromPath(formData, path) || ''} 
                             onChange={(e) => handleChange(e, path)} 
                         />
                     </div>
@@ -72,6 +72,11 @@ const DynamicForm = () => {
             return null;
         });
     };
+    
+    const getValueFromPath = (data, path) => {
+        return path.split('.').reduce((current, key) => current ? current[key] : null, data);
+    };
+    
 
     const handleSubmit = (event) => {
         event.preventDefault();
