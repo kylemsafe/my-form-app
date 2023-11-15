@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import formStructure from './formStructure.json'; // Adjust the path if needed
+import './DynamicForm.css';
+
 
 const DynamicForm = () => {
     const [formData, setFormData] = useState({});
@@ -17,6 +19,7 @@ const DynamicForm = () => {
                 }
                 return current[key];
             }, newState);
+            console.log("New state:", newState);
             return newState;
         });
     };    
@@ -74,8 +77,11 @@ const DynamicForm = () => {
     };
     
     const getValueFromPath = (data, path) => {
-        return path.split('.').reduce((current, key) => current ? current[key] : null, data);
+        const value = path.split('.').reduce((current, key) => current ? current[key] : null, data);
+        console.log(`Value for ${path}:`, value); // Add this line
+        return value;
     };
+    
     
 
     const handleSubmit = (event) => {
@@ -84,11 +90,12 @@ const DynamicForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="dynamic-form">
             {renderFormFields(formStructure)}
             <button type="submit">Submit</button>
         </form>
     );
+    
 };
 
 export default DynamicForm;
