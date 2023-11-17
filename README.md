@@ -1,3 +1,10 @@
+This project was setup as part of an experiment with forms. The website is running at https://kylemsafe.github.io/my-form-app/ as a test.
+Suggest to use Formik for next interation if progress continues on this.
+
+This guide was used to to deploy the react app on github. 
+https://www.youtube.com/watch?v=Q9n2mLqXFpU&ab_channel=PedroTech
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
